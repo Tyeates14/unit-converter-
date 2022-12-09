@@ -1,0 +1,34 @@
+# Define a function that takes a value and its unit as input and returns the
+# converted value in a specified unit
+def convert_units(value, from_unit, to_unit):
+  # Convert the value to the base unit of the measure
+  if from_unit == "cm":
+    base_value = value / 100.0
+  elif from_unit == "m":
+    base_value = value
+  elif from_unit == "in":
+    base_value = value * 0.0254
+  elif from_unit == "ft":
+    base_value = value * 0.3048
+  else:
+    raise ValueError("Invalid input unit")
+
+  # Convert the value in the base unit to the specified output unit
+  if to_unit == "cm":
+    converted_value = base_value * 100.0
+  elif to_unit == "m":
+    converted_value = base_value
+  elif to_unit == "in":
+    converted_value = base_value / 0.0254
+  elif to_unit == "ft":
+    converted_value = base_value / 0.3048
+  else:
+    raise ValueError("Invalid output unit")
+
+  return converted_value
+
+# Test the function
+print(convert_units(1, "m", "cm"))  # Should print 100
+print(convert_units(1, "m", "in"))  # Should print 39.37
+print(convert_units(1, "m", "ft"))  # Should print 3.281
+print(convert_units(1, "ft", "in"))  # Should print 12
